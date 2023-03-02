@@ -1,38 +1,34 @@
 package jp.co.axa.apidemo.entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name="EMPLOYEE")
+@Data
+@Table(name = "EMPLOYEE")
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@ApiModel(value = "Employee")
 public class Employee {
 
-    @Getter
-    @Setter
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Getter
-    @Setter
-    @Column(name="EMPLOYEE_NAME")
+    @Column(name = "EMPLOYEE_NAME")
+    @ApiModelProperty(value = "Employee name", example = "John")
     private String name;
 
-    @Getter
-    @Setter
-    @Column(name="EMPLOYEE_SALARY")
+    @Column(name = "EMPLOYEE_SALARY")
+    @ApiModelProperty(value = "Employee salary", example = "50000")
     private Integer salary;
 
-    @Getter
-    @Setter
-    @Column(name="DEPARTMENT")
+    @Column(name = "DEPARTMENT")
+    @ApiModelProperty(value = "Employee department", example = "IT")
     private String department;
 
 }
